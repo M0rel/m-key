@@ -1,0 +1,21 @@
+*--------------------------------------------*
+|    [tag] group: Commit name <- 50 symbols  |
+|                                            |
+|    Commit message body      <- 72 symbols  |
+|                                            |
+|    Signed-by                               |
+|                                            |
+*-------------------------------------------*
+
+
+Tags:
+- [FIX]
+- [refactor]
+
+
+groups:
+- all
+- core
+- docs
+- build
+- conf
