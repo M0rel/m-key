@@ -5,11 +5,11 @@ Q := @
 MAKEFLAGS += --no-print-directory
 endif
 
-OPENCM3_DIR := inc/libopencm3
-FREERTOS_DIR := inc/FreeRTOS
+OPENCM3_DIR := libs/libopencm3
+FREERTOS_DIR := libs/FreeRTOS
 
-OBJ_DIR = obj
-BIN_DIR = bin
+OBJ_DIR = out
+BIN_DIR = out
 SRC_DIR = src
 
 # all the files will be generated with this name (main.elf, main.bin, main.hex, etc)
@@ -24,7 +24,7 @@ SRC_FILES += $(FREERTOS_DIR)/timers.c
 SRC_FILES += $(FREERTOS_DIR)/portable/GCC/ARM_CM4F/port.c
 SRC_FILES += $(FREERTOS_DIR)/portable/MemMang/heap_4.c
 
-INCLUDES  = -I$(realpath config)
+INCLUDES  = -I$(realpath cfg)
 INCLUDES += -I$(realpath src)
 INCLUDES += -I$(OPENCM3_DIR)/include
 INCLUDES += -I$(FREERTOS_DIR)/include
@@ -135,10 +135,8 @@ $(OBJ_DIR)/%.o: %.c
 	$(Q)$(CC) $(TGT_CFLAGS) $(CFLAGS) $(TGT_CPPFLAGS) $(CPPFLAGS) -c $< -o $@
 
 clean:
-	@printf "  CLEAN\tbin\n"
-	$(Q)rm -Rf bin/*
-	@printf "  CLEAN\tobj\n"
-	$(Q)rm -Rf obj/*
+	@printf "  CLEAN\tout\n"
+	$(Q)rm -Rf out/*
 
 flash: $(BIN_DIR)/$(PROJECT_NAME).bin
 	@printf "  FLASH\t$<\n"
